@@ -37,7 +37,10 @@ function TaskDetailPage() {
     throw notFound();
   }
 
-  const meta = taskMeta[task.type];
+  const meta = taskMeta[task.type] ?? {
+    icon: Star,
+    tint: "bg-muted text-muted-foreground",
+  };
   const [proofType, setProofType] = useState<"link" | "text">("link");
   const [proofValue, setProofValue] = useState("");
 

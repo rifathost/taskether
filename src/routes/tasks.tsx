@@ -39,7 +39,10 @@ function TasksPage() {
 
       <main className="mt-5 space-y-3 px-5">
         {mockTasks.map((task) => {
-          const meta = taskMeta[task.type];
+          const meta = taskMeta[task.type] ?? {
+            icon: Star,
+            tint: "bg-muted text-muted-foreground",
+          };
           return (
             <Link
               key={task.id}
