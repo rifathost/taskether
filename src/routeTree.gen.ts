@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as LevelRouteImport } from './routes/level'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ReferralRouteImport } from './routes/referral'
+import { Route as SendRouteImport } from './routes/send'
+import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as WithdrawRouteImport } from './routes/withdraw'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LevelRoute = LevelRouteImport.update({
+  id: '/level',
+  path: '/level',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReferralRoute = ReferralRouteImport.update({
+  id: '/referral',
+  path: '/referral',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SendRoute = SendRouteImport.update({
+  id: '/send',
+  path: '/send',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasksRoute = TasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WithdrawRoute = WithdrawRouteImport.update({
+  id: '/withdraw',
+  path: '/withdraw',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/history': typeof HistoryRoute
+  '/level': typeof LevelRoute
+  '/profile': typeof ProfileRoute
+  '/referral': typeof ReferralRoute
+  '/send': typeof SendRoute
+  '/tasks': typeof TasksRoute
+  '/withdraw': typeof WithdrawRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/history': typeof HistoryRoute
+  '/level': typeof LevelRoute
+  '/profile': typeof ProfileRoute
+  '/referral': typeof ReferralRoute
+  '/send': typeof SendRoute
+  '/tasks': typeof TasksRoute
+  '/withdraw': typeof WithdrawRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/history': typeof HistoryRoute
+  '/level': typeof LevelRoute
+  '/profile': typeof ProfileRoute
+  '/referral': typeof ReferralRoute
+  '/send': typeof SendRoute
+  '/tasks': typeof TasksRoute
+  '/withdraw': typeof WithdrawRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/history'
+    | '/level'
+    | '/profile'
+    | '/referral'
+    | '/send'
+    | '/tasks'
+    | '/withdraw'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/history'
+    | '/level'
+    | '/profile'
+    | '/referral'
+    | '/send'
+    | '/tasks'
+    | '/withdraw'
+  id:
+    | '__root__'
+    | '/'
+    | '/history'
+    | '/level'
+    | '/profile'
+    | '/referral'
+    | '/send'
+    | '/tasks'
+    | '/withdraw'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HistoryRoute: typeof HistoryRoute
+  LevelRoute: typeof LevelRoute
+  ProfileRoute: typeof ProfileRoute
+  ReferralRoute: typeof ReferralRoute
+  SendRoute: typeof SendRoute
+  TasksRoute: typeof TasksRoute
+  WithdrawRoute: typeof WithdrawRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/level': {
+      id: '/level'
+      path: '/level'
+      fullPath: '/level'
+      preLoaderRoute: typeof LevelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/referral': {
+      id: '/referral'
+      path: '/referral'
+      fullPath: '/referral'
+      preLoaderRoute: typeof ReferralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/send': {
+      id: '/send'
+      path: '/send'
+      fullPath: '/send'
+      preLoaderRoute: typeof SendRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasks': {
+      id: '/tasks'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/withdraw': {
+      id: '/withdraw'
+      path: '/withdraw'
+      fullPath: '/withdraw'
+      preLoaderRoute: typeof WithdrawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HistoryRoute: HistoryRoute,
+  LevelRoute: LevelRoute,
+  ProfileRoute: ProfileRoute,
+  ReferralRoute: ReferralRoute,
+  SendRoute: SendRoute,
+  TasksRoute: TasksRoute,
+  WithdrawRoute: WithdrawRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
