@@ -17,6 +17,7 @@ import { Route as ReferralRouteImport } from './routes/referral'
 import { Route as SendRouteImport } from './routes/send'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as WithdrawRouteImport } from './routes/withdraw'
+import { Route as TasksIndexRouteImport } from './routes/tasks.index'
 import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -59,6 +60,11 @@ const WithdrawRoute = WithdrawRouteImport.update({
   path: '/withdraw',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TasksIndexRoute = TasksIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TasksRoute,
+} as any)
 const TasksTaskIdRoute = TasksTaskIdRouteImport.update({
   id: '/$taskId',
   path: '/$taskId',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRouteWithChildren
   '/withdraw': typeof WithdrawRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,9 +90,9 @@ export interface FileRoutesByTo {
   '/profile': typeof ProfileRoute
   '/referral': typeof ReferralRoute
   '/send': typeof SendRoute
-  '/tasks': typeof TasksRouteWithChildren
   '/withdraw': typeof WithdrawRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/tasks': typeof TasksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +105,7 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRouteWithChildren
   '/withdraw': typeof WithdrawRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +119,7 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/withdraw'
     | '/tasks/$taskId'
+    | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -119,9 +128,9 @@ export interface FileRouteTypes {
     | '/profile'
     | '/referral'
     | '/send'
-    | '/tasks'
     | '/withdraw'
     | '/tasks/$taskId'
+    | '/tasks'
   id:
     | '__root__'
     | '/'
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/withdraw'
     | '/tasks/$taskId'
+    | '/tasks/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -204,6 +214,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WithdrawRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tasks/': {
+      id: '/tasks/'
+      path: '/'
+      fullPath: '/tasks/'
+      preLoaderRoute: typeof TasksIndexRouteImport
+      parentRoute: typeof TasksRoute
+    }
     '/tasks/$taskId': {
       id: '/tasks/$taskId'
       path: '/$taskId'
@@ -216,10 +233,12 @@ declare module '@tanstack/react-router' {
 
 interface TasksRouteChildren {
   TasksTaskIdRoute: typeof TasksTaskIdRoute
+  TasksIndexRoute: typeof TasksIndexRoute
 }
 
 const TasksRouteChildren: TasksRouteChildren = {
   TasksTaskIdRoute: TasksTaskIdRoute,
+  TasksIndexRoute: TasksIndexRoute,
 }
 
 const TasksRouteWithChildren = TasksRoute._addFileChildren(TasksRouteChildren)
