@@ -26,7 +26,7 @@ function LevelPage() {
     (selected, tier, index) => (tasksCompleted >= tier.threshold ? index : selected),
     0,
   );
-  const currentTier = mockTiers[currentTierIndex];
+  const currentTier = mockTiers[currentTierIndex]!;
   const nextTier = mockTiers[currentTierIndex + 1];
 
   const progressToNext = nextTier
