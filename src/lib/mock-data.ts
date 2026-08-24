@@ -54,3 +54,23 @@ export const mockTasks = [
 ] as const;
 
 export type MockTask = (typeof mockTasks)[number];
+
+/**
+ * Level progress and tier thresholds.
+ * TODO (real version): compute tasksCompleted from the user's finished tasks;
+ * current tier should be derived from that count on the server.
+ */
+export const mockLevelProgress = {
+  tasksCompleted: 32,
+};
+
+export const mockTiers = [
+  { name: "Starter", threshold: 0 },
+  { name: "Active", threshold: 5 },
+  { name: "Pro", threshold: 20 },
+  { name: "Expert", threshold: 50 },
+  { name: "Elite", threshold: 100 },
+] as const;
+
+export type MockTier = (typeof mockTiers)[number];
+export type MockLevelProgress = typeof mockLevelProgress;
