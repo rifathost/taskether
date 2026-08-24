@@ -74,3 +74,38 @@ export const mockTiers = [
 
 export type MockTier = (typeof mockTiers)[number];
 export type MockLevelProgress = typeof mockLevelProgress;
+
+/**
+ * Referral program data.
+ * TODO (real version): link, stats, referral list and leaderboard all come
+ * from the backend; commission is a % of what each referred user earns.
+ */
+export const mockReferral = {
+  link: "t.me/taskether_bot?start=ref_84291056",
+  commissionNote: "Get 7% commission on what your invites earn, for their first 30 days.",
+  totalReferrals: "14",
+  totalCommissionUsdt: "23.80",
+};
+
+export const mockMyReferrals = [
+  { name: "Nadia_K", commissionUsdt: "4.20" },
+  { name: "arif.codes", commissionUsdt: "3.50" },
+  { name: "TaniaR99", commissionUsdt: "6.10" },
+  { name: "shovo_x", commissionUsdt: "1.90" },
+] as const;
+
+export const mockTopReferrers = [
+  { name: "Meherun_22", referrals: 89 },
+  { name: "DevRafi", referrals: 76 },
+  { name: "nusrat.k", referrals: 61 },
+  { name: "Tanvir_M", referrals: 54 },
+  { name: "proshanto", referrals: 47 },
+  { name: "IqraB", referrals: 41 },
+  { name: "Rakib_Vercel", referrals: 38 },
+  { name: "sadia.dev", referrals: 33 },
+  { name: "Hridoy44", referrals: 29 },
+  { name: "NafisaK", referrals: 25 },
+] as const;
+
+export type MockReferral = typeof mockReferral;
+
