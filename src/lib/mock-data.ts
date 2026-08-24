@@ -14,6 +14,14 @@ export const mockUser = {
   availableUsdt: "42.50",
   minWithdrawalNote: "Min. withdrawal 10 USDT · TRC20 network",
   notifications: 2,
+  name: "Fahim Ahmed",
+  telegramHandle: "@fahim_ah",
+  /**
+   * TODO (real version): when no wallet address is saved yet, the Wallet Address
+   * row should show a "Set your wallet address" prompt instead of a truncated
+   * address. That empty-state variant isn't needed for this mock pass.
+   */
+  walletAddress: "TXy8bQ4nRzP2mK7vL5tH9jW3aS6cD1eF4gH8iJ0kL2mN4oP6qR8sT0uV2wX4yZ6aB8cD0eF2gH4iJ6kL8mN0oP2qR4sT6uV8wX0yZ2aB4c",
 };
 
 export type MockUser = typeof mockUser;
