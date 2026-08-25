@@ -46,6 +46,10 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -76,6 +80,10 @@
   --primary: oklch(0.52 0.24 275);
   --primary-foreground: oklch(0.99 0.005 285);
   --primary-glow: oklch(0.45 0.26 295);
+  --success: oklch(0.6 0.18 145);
+  --success-foreground: oklch(0.99 0.005 285);
+  --warning: oklch(0.72 0.14 85);
+  --warning-foreground: oklch(0.25 0.03 80);
   --secondary: oklch(0.955 0.015 285);
   --secondary-foreground: oklch(0.32 0.06 278);
   --muted: oklch(0.955 0.012 285);
@@ -119,6 +127,10 @@
   --popover-foreground: oklch(0.984 0.003 247.858);
   --primary: oklch(0.929 0.013 255.508);
   --primary-foreground: oklch(0.208 0.042 265.755);
+  --success: oklch(0.7 0.16 145);
+  --success-foreground: oklch(0.208 0.042 265.755);
+  --warning: oklch(0.78 0.12 85);
+  --warning-foreground: oklch(0.18 0.03 80);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
