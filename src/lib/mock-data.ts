@@ -117,3 +117,86 @@ export const mockTopReferrers = [
 
 export type MockReferral = typeof mockReferral;
 
+/**
+ * Transaction history entries.
+ * TODO (real version): fetch from the backend; relative timestamps should be
+ * computed server-side or formatted on the client from ISO dates.
+ */
+export type MockTransaction = {
+  id: string;
+  type: "task_reward" | "referral" | "p2p_received" | "p2p_sent" | "withdrawal";
+  label: string;
+  amount: number;
+  time: string;
+  status?: "Completed" | "Pending";
+};
+
+export const mockTransactions: MockTransaction[] = [
+  {
+    id: "1",
+    type: "task_reward",
+    label: "Join TaskEther Announcements",
+    amount: 0.5,
+    time: "2 hours ago",
+  },
+  {
+    id: "2",
+    type: "referral",
+    label: "From Nadia_K",
+    amount: 0.35,
+    time: "5 hours ago",
+  },
+  {
+    id: "3",
+    type: "p2p_received",
+    label: "From arif.codes",
+    amount: 2.0,
+    time: "1 day ago",
+  },
+  {
+    id: "4",
+    type: "task_reward",
+    label: "Complete a Quick Survey",
+    amount: 0.75,
+    time: "1 day ago",
+  },
+  {
+    id: "5",
+    type: "p2p_sent",
+    label: "To TaniaR99",
+    amount: -5.0,
+    time: "2 days ago",
+  },
+  {
+    id: "6",
+    type: "withdrawal",
+    label: "To TRC20 wallet",
+    amount: -18.0,
+    status: "Completed",
+    time: "3 days ago",
+  },
+  {
+    id: "7",
+    type: "task_reward",
+    label: "Visit Partner Website",
+    amount: 0.3,
+    time: "4 days ago",
+  },
+  {
+    id: "8",
+    type: "withdrawal",
+    label: "To TRC20 wallet",
+    amount: -13.0,
+    status: "Pending",
+    time: "5 days ago",
+  },
+  {
+    id: "9",
+    type: "referral",
+    label: "From shovo_x",
+    amount: 0.2,
+    time: "6 days ago",
+  },
+];
+
+
