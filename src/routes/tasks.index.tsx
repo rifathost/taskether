@@ -30,14 +30,14 @@ export const Route = createFileRoute("/tasks/")({
 function TasksListPage() {
   return (
     <div className="mx-auto min-h-screen w-full max-w-md pb-28">
-      <header className="px-5 pt-5">
+      <header className="page-px pt-5">
         <h1 className="text-2xl font-bold tracking-tight text-foreground">Tasks</h1>
         <p className="mt-1 text-sm font-medium text-muted-foreground">
           Complete tasks and earn rewards
         </p>
       </header>
 
-      <main className="mt-5 space-y-3 px-5">
+      <main className="mt-5 space-y-3 page-px">
         {mockTasks.map((task) => {
           const meta = taskMeta[task.type] ?? {
             icon: Star,
@@ -48,7 +48,7 @@ function TasksListPage() {
               key={task.id}
               to="/tasks/$taskId"
               params={{ taskId: task.id }}
-              className="flex items-center gap-4 rounded-3xl bg-card p-4 shadow-card transition-transform active:scale-[0.99]"
+              className="flex items-center gap-4 rounded-3xl bg-card p-4 shadow-card transition-transform duration-150 active:scale-[0.99]"
             >
               <span
                 className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${meta.tint}`}

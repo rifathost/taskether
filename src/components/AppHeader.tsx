@@ -4,7 +4,7 @@ import { mockUser } from "@/lib/mock-data";
 
 export function AppHeader({ subtitle }: { subtitle?: string }) {
   return (
-    <header className="flex items-center justify-between gap-3 px-5 pt-5">
+    <header className="flex items-center justify-between gap-3 page-px pt-5">
       <div className="flex items-center gap-2.5">
         <img
           src={logoAsset.url}

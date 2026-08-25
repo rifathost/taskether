@@ -11,6 +11,10 @@ const tabs = [
 
 const hiddenOn = ["/send", "/withdraw", "/history"];
 
+// Performance note: tab navigation is already client-side — every tab is a
+// TanStack Router <Link> (no full page reloads), routes have no loaders, and
+// all screens render from local mock data, so nothing is re-fetched on mount.
+// Tab switches cost only a React re-render plus the 180ms page fade.
 export function BottomNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   if (hiddenOn.includes(pathname)) return null;

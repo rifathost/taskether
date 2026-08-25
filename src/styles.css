@@ -186,3 +186,23 @@
   background-image: var(--gradient-primary);
 }
 
+/* Shared screen-edge horizontal padding for every page (16px).
+   Change this one value to adjust side padding app-wide. */
+@utility page-px {
+  padding-inline: 1rem;
+}
+
+/* Route-change transition: subtle opacity-only fade (understated, finance-app feel). */
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility animate-page-fade {
+  animation: page-fade 180ms ease-out;
+}
+
