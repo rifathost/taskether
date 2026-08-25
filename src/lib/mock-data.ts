@@ -9,7 +9,7 @@
 export const mockUser = {
   balanceUsdt: "42.50",
   totalEarnedUsdt: "58.20",
-  tasksDone: "12",
+  tasksDone: "32",
   level: "Pro",
   availableUsdt: "42.50",
   minWithdrawalNote: "Min. withdrawal 10 USDT · TRC20 network",
