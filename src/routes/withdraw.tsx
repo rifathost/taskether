@@ -31,7 +31,7 @@ function WithdrawPage() {
   const netPayout = numericAmount - fee;
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-md px-5 pb-28 pt-5">
+    <div className="mx-auto min-h-screen w-full max-w-md page-px pb-28 pt-5">
       <header className="flex items-center gap-3">
         <Link
           to="/"

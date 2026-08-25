@@ -35,14 +35,14 @@ function LevelPage() {
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-md pb-28">
-      <header className="px-5 pt-5">
+      <header className="page-px pt-5">
         <h1 className="text-2xl font-bold tracking-tight text-foreground">Level</h1>
         <p className="mt-1 text-sm font-medium text-muted-foreground">
           Purely merit-based — no shortcuts.
         </p>
       </header>
 
-      <main className="mt-5 space-y-6 px-5">
+      <main className="mt-5 space-y-6 page-px">
         {/* Hero status card */}
         <section className="rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <div className="flex items-center gap-4">

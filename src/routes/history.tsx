@@ -72,7 +72,7 @@ function HistoryPage() {
   });
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-md px-5 pb-28 pt-5">
+    <div className="mx-auto min-h-screen w-full max-w-md page-px pb-28 pt-5">
       <header className="relative flex items-center justify-center py-2">
         <Link
           to="/"
@@ -115,7 +115,7 @@ function HistoryPage() {
           return (
             <li
               key={tx.id}
-              className="flex items-center gap-4 rounded-3xl bg-card p-4 shadow-card"
+              className="flex items-center gap-4 rounded-3xl bg-card p-4 shadow-card transition-transform active:scale-[0.99]"
             >
               <div
                 className={`grid h-11 w-11 shrink-0 place-items-center rounded-full ${iconBg}`}

@@ -59,7 +59,7 @@ function Home() {
     <div className="mx-auto min-h-screen w-full max-w-md pb-28">
       <AppHeader subtitle="Wallet" />
 
-      <main className="px-5">
+      <main className="page-px">
         {/* Hero wallet card */}
         <section className="mt-5 rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <p className="text-sm font-medium text-primary-foreground/80">Total Balance</p>
@@ -78,14 +78,14 @@ function Home() {
         <div className="mt-4 grid grid-cols-2 gap-3">
           <Link
             to="/send"
-            className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero active:scale-[0.98]"
+            className="flex items-center justify-center gap-2 rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero transition-transform active:scale-[0.98]"
           >
             <Send size={20} />
             Send
           </Link>
           <Link
             to="/withdraw"
-            className="flex items-center justify-center gap-2 rounded-2xl bg-card py-4 text-base font-semibold text-foreground shadow-soft active:scale-[0.98]"
+            className="flex items-center justify-center gap-2 rounded-2xl bg-card py-4 text-base font-semibold text-foreground shadow-soft transition-transform active:scale-[0.98]"
           >
             <ArrowUp size={20} />
             Withdraw
@@ -120,7 +120,7 @@ function Home() {
 
         <Link
           to="/history"
-          className="mt-4 flex items-center justify-between rounded-3xl bg-card px-5 py-4 shadow-card active:scale-[0.99]"
+          className="mt-4 flex items-center justify-between rounded-3xl bg-card px-5 py-4 shadow-card transition-transform active:scale-[0.99]"
         >
           <span className="text-sm font-semibold text-foreground">View history</span>
           <ChevronRight size={18} className="text-primary" />

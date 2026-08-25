@@ -46,14 +46,14 @@ function ReferralPage() {
 
   return (
     <div className="mx-auto min-h-screen w-full max-w-md pb-28">
-      <header className="px-5 pt-5">
+      <header className="page-px pt-5">
         <h1 className="text-2xl font-bold tracking-tight text-foreground">Referral</h1>
         <p className="mt-1 text-sm font-medium text-muted-foreground">
           Invite friends, earn together.
         </p>
       </header>
 
-      <main className="mt-5 space-y-6 px-5">
+      <main className="mt-5 space-y-6 page-px">
         {/* Hero */}
         <section className="rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <h2 className="text-3xl font-bold tracking-tight text-primary-foreground">
@@ -122,7 +122,7 @@ function ReferralPage() {
             {mockMyReferrals.map((person) => (
               <div
                 key={person.name}
-                className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card"
+                className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card transition-transform active:scale-[0.99]"
               >
                 <Avatar name={person.name} />
                 <p className="min-w-0 flex-1 truncate text-base font-bold text-foreground">
@@ -146,7 +146,7 @@ function ReferralPage() {
             {mockTopReferrers.map((person, index) => (
               <div
                 key={person.name}
-                className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card"
+                className="flex items-center gap-3 rounded-3xl bg-card p-4 shadow-card transition-transform active:scale-[0.99]"
               >
                 <span className="w-5 shrink-0 text-sm font-bold text-muted-foreground">
                   {index + 1}
