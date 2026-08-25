@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowLeft, AtSign, Send } from "lucide-react";
+import { ArrowLeft, Send } from "lucide-react";
 import { mockUser } from "@/lib/mock-data";
 
 // Config constants — easy to swap for real backend config later.
@@ -52,8 +52,7 @@ function SendPage() {
             Recipient
           </label>
           <div className="flex items-center rounded-2xl border border-input bg-background px-4 py-3 focus-within:ring-2 focus-within:ring-ring">
-            <AtSign size={18} className="mr-2 text-muted-foreground" />
-            <span className="mr-1 text-sm font-semibold text-muted-foreground">@</span>
+            <span className="mr-2 text-sm font-semibold text-muted-foreground">@</span>
             <input
               id="recipient"
               type="text"
