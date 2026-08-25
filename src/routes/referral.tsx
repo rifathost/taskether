@@ -101,7 +101,7 @@ function ReferralPage() {
                 <DollarSign size={20} />
               </span>
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-muted-foreground">
+                <p className="text-sm font-medium leading-tight text-muted-foreground">
                   Total Commission
                 </p>
                 <p className="flex items-baseline gap-1">
