@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "7d2e2545-62ac-4040-ab40-fb22a81ee24c",
-  "project_id": "9b0d3696-6ad3-4714-ad98-6782c9a9e860",
-  "url": "/__l5e/assets-v1/7d2e2545-62ac-4040-ab40-fb22a81ee24c/taskether-logo.png",
-  "r2_key": "a/v1/9b0d3696-6ad3-4714-ad98-6782c9a9e860/7d2e2545-62ac-4040-ab40-fb22a81ee24c/taskether-logo.png",
-  "original_filename": "taskether-logo.png",
-  "size": 1196374,
   "content_type": "image/png",
-  "created_at": "2026-08-23T07:10:57Z"
+  "created_at": "2026-08-23T07:10:57Z",
+  "original_filename": "taskether-logo.png",
+  "project_id": "dd4d5266-c5ba-44a3-a97e-6e5d172a6a49",
+  "r2_key": "a/v1/dd4d5266-c5ba-44a3-a97e-6e5d172a6a49/7d2e2545-62ac-4040-ab40-fb22a81ee24c/taskether-logo.png",
+  "size": 1196374,
+  "url": "/__l5e/assets-v1/7d2e2545-62ac-4040-ab40-fb22a81ee24c/taskether-logo.png",
+  "version": 1
 }
