@@ -21,7 +21,7 @@ export const mockUser = {
    * row should show a "Set your wallet address" prompt instead of a truncated
    * address. That empty-state variant isn't needed for this mock pass.
    */
-  walletAddress: "TXy8bQ4nRzP2mK7vL5tH9jW3aS6cD1eF4gH8iJ0kL2mN4oP6qR8sT0uV2wX4yZ6aB8cD0eF2gH4iJ6kL8mN0oP2qR4sT6uV8wX0yZ2aB4c",
+  walletAddress: "TXy8bQ4nRz9kLmPqW3xVdF7gH2sJ4tYkF92mP",
 };
 
 export type MockUser = typeof mockUser;
