@@ -192,8 +192,13 @@
   padding-inline: 1rem;
 }
 
-/* Route-change transition: subtle opacity-only fade (understated, finance-app feel). */
-@keyframes page-fade {
+/* --- Motion system -------------------------------------------------------
+   Tab switches use a hard cut (content unmounts for ~110ms) handled in
+   src/routes/__root.tsx, then content reveals with one of the fades below.
+   No slides, no springs, no idle/looping motion. */
+
+/* Single-block fade: whole content area reveals as one unit. */
+@keyframes block-fade {
   from {
     opacity: 0;
   }
@@ -202,7 +207,26 @@
   }
 }
 
-@utility animate-page-fade {
-  animation: page-fade 180ms ease-out;
+@utility animate-block-fade {
+  animation: block-fade 140ms ease-out both;
 }
 
+/* Staggered list reveal: per-item fade from ~18% opacity. Delay is applied
+   inline per item (~75ms apart). */
+@keyframes card-reveal {
+  from {
+    opacity: 0.18;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility animate-card-reveal {
+  animation: card-reveal 180ms ease-out both;
+}
+
+/* Loading spinner: one rotation per 0.9s, linear, continuous. */
+@utility animate-spin-slow {
+  animation: spin 0.9s linear infinite;
+}
