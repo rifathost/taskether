@@ -153,6 +153,7 @@ function RootComponent() {
         </div>
       )}
       <BottomNav />
+      <Toaster />
     </QueryClientProvider>
   );
 }
