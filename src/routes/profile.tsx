@@ -25,11 +25,13 @@ export const Route = createFileRoute("/profile")({
   }),
   component: function ProfilePage() {
     return (
-      <main className="min-h-screen px-4 pb-28 pt-5">
+      <main className="mx-auto min-h-screen w-full max-w-md pb-28 pt-5 page-px">
         <header className="mb-6">
           <h1 className="text-2xl font-bold tracking-tight text-foreground">Profile</h1>
         </header>
 
+        {/* Single-block fade: everything below the header reveals as one unit. */}
+        <div className="animate-block-fade">
         <section className="relative overflow-hidden rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <div className="flex flex-col items-center text-center">
             <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/20 text-3xl font-bold text-primary-foreground backdrop-blur-sm">
