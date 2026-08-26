@@ -8,7 +8,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -119,17 +119,38 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+/** Hard-cut duration between screens: content is unmounted (blank) for this long. */
+const CUT_MS = 110;
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
+  // Hard cut, not a cross-fade: on every navigation the outgoing content area
+  // unmounts for ~110ms (blank frame), then the new screen mounts fresh and
+  // plays its own reveal (staggered on Tasks, single-block fade elsewhere).
+  // The bottom nav lives outside this block so it re-renders instantly.
+  const [cutting, setCutting] = useState(false);
+  const shownPath = useRef(pathname);
+
+  useEffect(() => {
+    if (shownPath.current === pathname) return;
+    shownPath.current = pathname;
+    setCutting(true);
+    const timer = setTimeout(() => setCutting(false), CUT_MS);
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes.
-          Keyed by pathname so every tab switch / push / pop replays the subtle fade. */}
-      <div key={pathname} className="animate-page-fade">
-        <Outlet />
-      </div>
+      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      {cutting ? (
+        <div className="min-h-screen" />
+      ) : (
+        <div key={pathname}>
+          <Outlet />
+        </div>
+      )}
       <BottomNav />
     </QueryClientProvider>
   );

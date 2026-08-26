@@ -29,7 +29,7 @@ function SendPage() {
   const recipientGets = numericAmount * (1 - SEND_FEE_RATE);
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-md px-5 pb-28 pt-5">
+    <div className="mx-auto min-h-screen w-full max-w-md pb-28 pt-5 page-px">
       <header className="flex items-center gap-3">
         <Link
           to="/"
@@ -100,7 +100,7 @@ function SendPage() {
 
       <button
         type="button"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero active:scale-[0.98]"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero transition-transform active:scale-[0.98]"
       >
         <Send size={20} />
         Send

@@ -25,11 +25,13 @@ export const Route = createFileRoute("/profile")({
   }),
   component: function ProfilePage() {
     return (
-      <main className="min-h-screen px-4 pb-28 pt-5">
+      <main className="mx-auto min-h-screen w-full max-w-md pb-28 pt-5 page-px">
         <header className="mb-6">
           <h1 className="text-2xl font-bold tracking-tight text-foreground">Profile</h1>
         </header>
 
+        {/* Single-block fade: everything below the header reveals as one unit. */}
+        <div className="animate-block-fade">
         <section className="relative overflow-hidden rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <div className="flex flex-col items-center text-center">
             <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-white/20 text-3xl font-bold text-primary-foreground backdrop-blur-sm">
@@ -45,7 +47,7 @@ export const Route = createFileRoute("/profile")({
         <section className="mt-6 overflow-hidden rounded-3xl bg-card shadow-card">
           <Link
             to="/withdraw"
-            className="flex items-center gap-4 border-b border-border/50 p-4 active:bg-accent/50"
+            className="flex items-center gap-4 border-b border-border/50 p-4 transition-transform active:scale-[0.99] active:bg-accent/50"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
               <Wallet size={20} strokeWidth={2} />
@@ -61,7 +63,7 @@ export const Route = createFileRoute("/profile")({
 
           <Link
             to="/history"
-            className="flex items-center gap-4 p-4 active:bg-accent/50"
+            className="flex items-center gap-4 p-4 transition-transform active:scale-[0.99] active:bg-accent/50"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
               <FileText size={20} strokeWidth={2} />
@@ -76,6 +78,7 @@ export const Route = createFileRoute("/profile")({
         <p className="mt-12 text-center text-sm font-medium text-muted-foreground">
           Earn from anywhere. Get paid in USDT.
         </p>
+        </div>
       </main>
     );
   },

@@ -45,7 +45,7 @@ function TaskDetailPage() {
   const [proofValue, setProofValue] = useState("");
 
   return (
-    <div className="mx-auto min-h-screen w-full max-w-md px-5 pb-28 pt-5">
+    <div className="mx-auto min-h-screen w-full max-w-md pb-28 pt-5 page-px">
       <header className="flex items-center gap-3">
         <Link
           to="/tasks"
@@ -128,7 +128,7 @@ function TaskDetailPage() {
 
         <button
           type="button"
-          className="mt-4 flex w-full items-center justify-center rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero active:scale-[0.98]"
+          className="mt-4 flex w-full items-center justify-center rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero transition-transform active:scale-[0.98]"
         >
           Submit for Review
         </button>

@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUp, ChevronRight, CreditCard, DollarSign, Send, SquareCheck, Star } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { useCountUp } from "@/hooks/use-count-up";
 import { mockUser } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
@@ -23,6 +24,8 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+// `countUpId` marks the money values that animate up on first mount this
+// session. "Tasks Done" and "Level" render instantly.
 const stats = [
   {
     label: "Total Earned",
@@ -30,6 +33,7 @@ const stats = [
     unit: "USDT",
     icon: DollarSign,
     tint: "bg-emerald-500/10 text-emerald-600",
+    countUpId: "home-total-earned",
   },
   {
     label: "Tasks Done",
@@ -51,8 +55,15 @@ const stats = [
     unit: "USDT",
     icon: CreditCard,
     tint: "bg-sky-500/10 text-sky-600",
+    countUpId: "home-available",
   },
-];
+] as const;
+
+/** Counts up to a money value over ~450ms, ease-out. */
+function CountUpValue({ id, value }: { id: string; value: string }) {
+  const animated = useCountUp(id, Number(value));
+  return <>{animated.toFixed(2)}</>;
+}
 
 function Home() {
   return (
@@ -98,18 +109,28 @@ function Home() {
         </div>
 
         <section className="mt-3 grid grid-cols-2 gap-3">
-          {stats.map(({ label, value, unit, icon: Icon, tint }) => (
-            <div key={label} className="rounded-3xl bg-card p-4 shadow-card">
+          {stats.map((stat) => (
+            <div key={stat.label} className="rounded-3xl bg-card p-4 shadow-card">
               <div className="flex items-center gap-3">
-                <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${tint}`}>
-                  <Icon size={20} />
+                <span
+                  className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl ${stat.tint}`}
+                >
+                  <stat.icon size={20} />
                 </span>
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-muted-foreground">{label}</p>
+                  <p className="truncate text-sm font-medium text-muted-foreground">{stat.label}</p>
                   <p className="flex items-baseline gap-1">
-                    <span className="text-xl font-bold text-foreground">{value}</span>
-                    {unit ? (
-                      <span className="text-xs font-semibold text-muted-foreground">{unit}</span>
+                    <span className="text-xl font-bold text-foreground">
+                      {"countUpId" in stat ? (
+                        <CountUpValue id={stat.countUpId} value={stat.value} />
+                      ) : (
+                        stat.value
+                      )}
+                    </span>
+                    {stat.unit ? (
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        {stat.unit}
+                      </span>
                     ) : null}
                   </p>
                 </div>

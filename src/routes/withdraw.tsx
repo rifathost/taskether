@@ -113,7 +113,7 @@ function WithdrawPage() {
 
       <button
         type="button"
-        className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero active:scale-[0.98]"
+        className="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-primary py-4 text-base font-semibold text-primary-foreground shadow-hero transition-transform active:scale-[0.98]"
       >
         <ArrowUp size={20} />
         Request Withdrawal
