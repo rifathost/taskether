@@ -78,6 +78,7 @@ export const Route = createFileRoute("/profile")({
         <p className="mt-12 text-center text-sm font-medium text-muted-foreground">
           Earn from anywhere. Get paid in USDT.
         </p>
+        </div>
       </main>
     );
   },
