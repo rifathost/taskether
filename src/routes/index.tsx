@@ -127,8 +127,10 @@ function Home() {
                         stat.value
                       )}
                     </span>
-                    {unit ? (
-                      <span className="text-xs font-semibold text-muted-foreground">{unit}</span>
+                    {stat.unit ? (
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        {stat.unit}
+                      </span>
                     ) : null}
                   </p>
                 </div>
