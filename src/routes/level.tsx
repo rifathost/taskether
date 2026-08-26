@@ -42,7 +42,8 @@ function LevelPage() {
         </p>
       </header>
 
-      <main className="mt-5 space-y-6 page-px">
+      {/* Single-block fade: everything below the header reveals as one unit. */}
+      <main className="mt-5 animate-block-fade space-y-6 page-px">
         {/* Hero status card */}
         <section className="rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <div className="flex items-center gap-4">
