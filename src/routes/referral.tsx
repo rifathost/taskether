@@ -53,7 +53,8 @@ function ReferralPage() {
         </p>
       </header>
 
-      <main className="mt-5 space-y-6 page-px">
+      {/* Single-block fade: everything below the header reveals as one unit. */}
+      <main className="mt-5 animate-block-fade space-y-6 page-px">
         {/* Hero */}
         <section className="rounded-3xl bg-gradient-primary p-6 shadow-hero">
           <h2 className="text-3xl font-bold tracking-tight text-primary-foreground">
