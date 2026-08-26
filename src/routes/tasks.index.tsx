@@ -38,7 +38,7 @@ function TasksListPage() {
       </header>
 
       <main className="mt-5 space-y-3 page-px">
-        {mockTasks.map((task) => {
+        {mockTasks.map((task, index) => {
           const meta = taskMeta[task.type] ?? {
             icon: Star,
             tint: "bg-muted text-muted-foreground",
@@ -48,7 +48,11 @@ function TasksListPage() {
               key={task.id}
               to="/tasks/$taskId"
               params={{ taskId: task.id }}
-              className="flex items-center gap-4 rounded-3xl bg-card p-4 shadow-card transition-transform duration-150 active:scale-[0.99]"
+              // Staggered reveal: each card fades 18% -> 100% over 180ms,
+              // 75ms apart, top to bottom. Replays on every visit because the
+              // route remounts after the tab-switch hard cut.
+              style={{ animationDelay: `${index * 75}ms` }}
+              className="flex animate-card-reveal items-center gap-4 rounded-3xl bg-card p-4 shadow-card transition-transform duration-150 active:scale-[0.99]"
             >
               <span
                 className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl ${meta.tint}`}
