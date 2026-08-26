@@ -59,10 +59,9 @@ const stats = [
   },
 ] as const;
 
-/** Renders a stat value, counting up to it when the stat opts in. */
-function StatValue({ id, value }: { id?: string; value: string }) {
-  const animated = useCountUp(id ?? "", Number(value));
-  if (!id || Number.isNaN(Number(value))) return <>{value}</>;
+/** Counts up to a money value over ~450ms, ease-out. */
+function CountUpValue({ id, value }: { id: string; value: string }) {
+  const animated = useCountUp(id, Number(value));
   return <>{animated.toFixed(2)}</>;
 }
 
