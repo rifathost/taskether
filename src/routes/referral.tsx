@@ -91,7 +91,9 @@ function ReferralPage() {
                 <Users size={20} />
               </span>
               <div className="min-w-0">
-                <p className="truncate text-sm font-medium text-muted-foreground">Total Referrals</p>
+                <p className="text-sm font-medium leading-tight text-muted-foreground">
+                  Total Referrals
+                </p>
                 <p className="text-xl font-bold text-foreground">{mockReferral.totalReferrals}</p>
               </div>
             </div>
