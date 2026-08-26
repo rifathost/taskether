@@ -24,6 +24,8 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+// `countUpId` marks the money values that animate up on first mount this
+// session. "Tasks Done" and "Level" render instantly.
 const stats = [
   {
     label: "Total Earned",
@@ -31,6 +33,7 @@ const stats = [
     unit: "USDT",
     icon: DollarSign,
     tint: "bg-emerald-500/10 text-emerald-600",
+    countUpId: "home-total-earned",
   },
   {
     label: "Tasks Done",
@@ -52,8 +55,16 @@ const stats = [
     unit: "USDT",
     icon: CreditCard,
     tint: "bg-sky-500/10 text-sky-600",
+    countUpId: "home-available",
   },
-];
+] as const;
+
+/** Renders a stat value, counting up to it when the stat opts in. */
+function StatValue({ id, value }: { id?: string; value: string }) {
+  const animated = useCountUp(id ?? "", Number(value));
+  if (!id || Number.isNaN(Number(value))) return <>{value}</>;
+  return <>{animated.toFixed(2)}</>;
+}
 
 function Home() {
   return (
