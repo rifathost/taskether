@@ -21,9 +21,9 @@ export function useCountUp(id: string, target: number, durationMs = 450) {
     }
     played.add(id);
 
-    const start = performance.now();
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / durationMs);
+    const start = Date.now();
+    const tick = () => {
+      const t = Math.min(1, Math.max(0, (Date.now() - start) / durationMs));
       const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
       setValue(target * eased);
       if (t < 1) frame.current = requestAnimationFrame(tick);
