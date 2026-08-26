@@ -47,7 +47,7 @@ export const Route = createFileRoute("/profile")({
         <section className="mt-6 overflow-hidden rounded-3xl bg-card shadow-card">
           <Link
             to="/withdraw"
-            className="flex items-center gap-4 border-b border-border/50 p-4 active:bg-accent/50"
+            className="flex items-center gap-4 border-b border-border/50 p-4 transition-transform active:scale-[0.99] active:bg-accent/50"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
               <Wallet size={20} strokeWidth={2} />
@@ -63,7 +63,7 @@ export const Route = createFileRoute("/profile")({
 
           <Link
             to="/history"
-            className="flex items-center gap-4 p-4 active:bg-accent/50"
+            className="flex items-center gap-4 p-4 transition-transform active:scale-[0.99] active:bg-accent/50"
           >
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-secondary text-secondary-foreground">
               <FileText size={20} strokeWidth={2} />
