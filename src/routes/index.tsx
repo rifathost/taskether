@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUp, ChevronRight, CreditCard, DollarSign, Send, SquareCheck, Star } from "lucide-react";
 import { AppHeader } from "@/components/AppHeader";
+import { useCountUp } from "@/hooks/use-count-up";
 import { mockUser } from "@/lib/mock-data";
 
 export const Route = createFileRoute("/")({
