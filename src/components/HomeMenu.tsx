@@ -39,7 +39,8 @@ export function HomeMenu({ open, onClose }: HomeMenuProps) {
     if (open) {
       setRender(true);
       // Force a reflow so the transition plays from the closed state.
-      requestAnimationFrame(() => setShow(true));
+      const raf = requestAnimationFrame(() => setShow(true));
+      return () => cancelAnimationFrame(raf);
     } else {
       setShow(false);
       const timer = setTimeout(() => setRender(false), 250);
