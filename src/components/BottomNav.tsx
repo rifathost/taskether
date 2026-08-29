@@ -17,7 +17,7 @@ const hiddenOn = ["/send", "/withdraw", "/history"];
 // Tab switches cost only a React re-render plus the 180ms page fade.
 export function BottomNav() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  if (hiddenOn.includes(pathname)) return null;
+  if (hiddenOn.includes(pathname) || pathname.startsWith("/admin")) return null;
 
   return (
     <nav className="fixed inset-x-0 bottom-0 z-50 border-t border-border/40 bg-card/95 pb-[env(safe-area-inset-bottom)] shadow-nav backdrop-blur">

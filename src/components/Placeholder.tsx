@@ -5,17 +5,19 @@ export function Placeholder({
   title,
   description = "Coming soon",
   withBack = false,
+  backTo = "/",
 }: {
   title: string;
   description?: string;
   withBack?: boolean;
+  backTo?: "/" | "/admin";
 }) {
   return (
     <div className="flex min-h-screen flex-col px-5 pb-28 pt-6">
       <div className="flex items-center gap-3">
         {withBack ? (
           <Link
-            to="/"
+            to={backTo}
             aria-label="Back"
             className="grid h-11 w-11 place-items-center rounded-2xl bg-card shadow-soft"
           >
