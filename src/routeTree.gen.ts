@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as HistoryRouteImport } from './routes/history'
 import { Route as LevelRouteImport } from './routes/level'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -17,12 +18,22 @@ import { Route as ReferralRouteImport } from './routes/referral'
 import { Route as SendRouteImport } from './routes/send'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as WithdrawRouteImport } from './routes/withdraw'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminSubmissionsRouteImport } from './routes/admin.submissions'
+import { Route as AdminTasksRouteImport } from './routes/admin.tasks'
+import { Route as AdminWithdrawalsRouteImport } from './routes/admin.withdrawals'
 import { Route as TasksIndexRouteImport } from './routes/tasks.index'
 import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HistoryRoute = HistoryRouteImport.update({
@@ -60,6 +71,31 @@ const WithdrawRoute = WithdrawRouteImport.update({
   path: '/withdraw',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSubmissionsRoute = AdminSubmissionsRouteImport.update({
+  id: '/submissions',
+  path: '/submissions',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTasksRoute = AdminTasksRouteImport.update({
+  id: '/tasks',
+  path: '/tasks',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminWithdrawalsRoute = AdminWithdrawalsRouteImport.update({
+  id: '/withdrawals',
+  path: '/withdrawals',
+  getParentRoute: () => AdminRoute,
+} as any)
 const TasksIndexRoute = TasksIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,6 +109,7 @@ const TasksTaskIdRoute = TasksTaskIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/history': typeof HistoryRoute
   '/level': typeof LevelRoute
   '/profile': typeof ProfileRoute
@@ -80,7 +117,12 @@ export interface FileRoutesByFullPath {
   '/send': typeof SendRoute
   '/tasks': typeof TasksRouteWithChildren
   '/withdraw': typeof WithdrawRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/submissions': typeof AdminSubmissionsRoute
+  '/admin/tasks': typeof AdminTasksRoute
+  '/admin/withdrawals': typeof AdminWithdrawalsRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/admin/': typeof AdminIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRoutesByTo {
@@ -91,12 +133,18 @@ export interface FileRoutesByTo {
   '/referral': typeof ReferralRoute
   '/send': typeof SendRoute
   '/withdraw': typeof WithdrawRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/submissions': typeof AdminSubmissionsRoute
+  '/admin/tasks': typeof AdminTasksRoute
+  '/admin/withdrawals': typeof AdminWithdrawalsRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/admin': typeof AdminIndexRoute
   '/tasks': typeof TasksIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
   '/history': typeof HistoryRoute
   '/level': typeof LevelRoute
   '/profile': typeof ProfileRoute
@@ -104,13 +152,19 @@ export interface FileRoutesById {
   '/send': typeof SendRoute
   '/tasks': typeof TasksRouteWithChildren
   '/withdraw': typeof WithdrawRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/submissions': typeof AdminSubmissionsRoute
+  '/admin/tasks': typeof AdminTasksRoute
+  '/admin/withdrawals': typeof AdminWithdrawalsRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
+  '/admin/': typeof AdminIndexRoute
   '/tasks/': typeof TasksIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/history'
     | '/level'
     | '/profile'
@@ -118,7 +172,12 @@ export interface FileRouteTypes {
     | '/send'
     | '/tasks'
     | '/withdraw'
+    | '/admin/login'
+    | '/admin/submissions'
+    | '/admin/tasks'
+    | '/admin/withdrawals'
     | '/tasks/$taskId'
+    | '/admin/'
     | '/tasks/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -129,11 +188,17 @@ export interface FileRouteTypes {
     | '/referral'
     | '/send'
     | '/withdraw'
+    | '/admin/login'
+    | '/admin/submissions'
+    | '/admin/tasks'
+    | '/admin/withdrawals'
     | '/tasks/$taskId'
+    | '/admin'
     | '/tasks'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/history'
     | '/level'
     | '/profile'
@@ -141,12 +206,18 @@ export interface FileRouteTypes {
     | '/send'
     | '/tasks'
     | '/withdraw'
+    | '/admin/login'
+    | '/admin/submissions'
+    | '/admin/tasks'
+    | '/admin/withdrawals'
     | '/tasks/$taskId'
+    | '/admin/'
     | '/tasks/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   HistoryRoute: typeof HistoryRoute
   LevelRoute: typeof LevelRoute
   ProfileRoute: typeof ProfileRoute
@@ -163,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/history': {
@@ -214,6 +292,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WithdrawRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/submissions': {
+      id: '/admin/submissions'
+      path: '/submissions'
+      fullPath: '/admin/submissions'
+      preLoaderRoute: typeof AdminSubmissionsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/tasks': {
+      id: '/admin/tasks'
+      path: '/tasks'
+      fullPath: '/admin/tasks'
+      preLoaderRoute: typeof AdminTasksRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/withdrawals': {
+      id: '/admin/withdrawals'
+      path: '/withdrawals'
+      fullPath: '/admin/withdrawals'
+      preLoaderRoute: typeof AdminWithdrawalsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/tasks/': {
       id: '/tasks/'
       path: '/'
@@ -231,6 +344,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminSubmissionsRoute: typeof AdminSubmissionsRoute
+  AdminTasksRoute: typeof AdminTasksRoute
+  AdminWithdrawalsRoute: typeof AdminWithdrawalsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminLoginRoute: AdminLoginRoute,
+  AdminSubmissionsRoute: AdminSubmissionsRoute,
+  AdminTasksRoute: AdminTasksRoute,
+  AdminWithdrawalsRoute: AdminWithdrawalsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 interface TasksRouteChildren {
   TasksTaskIdRoute: typeof TasksTaskIdRoute
   TasksIndexRoute: typeof TasksIndexRoute
@@ -245,6 +376,7 @@ const TasksRouteWithChildren = TasksRoute._addFileChildren(TasksRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   HistoryRoute: HistoryRoute,
   LevelRoute: LevelRoute,
   ProfileRoute: ProfileRoute,
