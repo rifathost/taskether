@@ -30,9 +30,11 @@ export function useSubmissions() {
 }
 
 export function approveSubmission(id: string) {
-  submissions = submissions.map((s) =>
-    s.id === id ? { ...s, status: "approved" as const, rejectionReason: undefined } : s,
-  );
+  submissions = submissions.map((s) => {
+    if (s.id !== id) return s;
+    const { rejectionReason: _omit, ...rest } = s;
+    return { ...rest, status: "approved" as const };
+  });
   emit();
 }
 
