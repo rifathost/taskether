@@ -78,7 +78,7 @@ export const mockWithdrawals: MockWithdrawal[] = [
     amount: 32,
     walletAddress: "TCq2vJ6nD8sX1pR5mW9zK3bY7hL4tG0fAu",
     status: "completed",
-    txHash: "41ab77e0c5d92f6318b4ea70cd25f893a1607be4d3f82c95170ade6ب".slice(0, 64),
+    txHash: "41ab77e0c5d92f6318b4ea70cd25f893a1607be4d3f82c95170ade6b0",
     requestedAt: "2 days ago",
   }),
   withFees({
