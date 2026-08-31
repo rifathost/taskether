@@ -7,7 +7,7 @@ export const mockAdminStats = {
   // Kept in sync manually with mockSubmissions below (8 pending).
   pendingSubmissions: 8,
   // TODO (real version): count withdrawal requests with status = 'pending'.
-  pendingWithdrawals: 3,
+  pendingWithdrawals: 4,
   // TODO (real version): total registered users from the users table.
   totalUsers: 1284,
   // TODO (real version): count tasks that are active and still have open slots.
