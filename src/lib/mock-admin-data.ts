@@ -11,10 +11,118 @@ export const mockAdminStats = {
   // TODO (real version): total registered users from the users table.
   totalUsers: 1284,
   // TODO (real version): count tasks that are active and still have open slots.
-  activeTasks: 4,
+  // Kept in sync manually with mockTasks below (3 active).
+  activeTasks: 3,
 };
 
 export type MockAdminStats = typeof mockAdminStats;
+
+export type TaskStatus = "draft" | "active" | "paused" | "completed" | "archived";
+
+export type MockTask = {
+  id: string;
+  title: string;
+  /** Free text — admins can invent new categories. */
+  type: string;
+  description: string;
+  proofInstructions: string;
+  rewardAmount: number;
+  totalSlots: number;
+  remainingSlots: number;
+  status: TaskStatus;
+  createdAt: string;
+};
+
+// TODO (real version): fetch from the tasks table, newest first.
+export const mockTasks: MockTask[] = [
+  {
+    id: "t1",
+    title: "Join our Telegram Channel",
+    type: "Join Channel",
+    description: "Join the official TaskEther announcements channel and stay subscribed.",
+    proofInstructions:
+      "Send the link to your join message in the channel, or your Telegram username.",
+    rewardAmount: 1.5,
+    totalSlots: 500,
+    remainingSlots: 182,
+    status: "active",
+    createdAt: "2 weeks ago",
+  },
+  {
+    id: "t2",
+    title: "Visit Partner Website",
+    type: "Visit Website",
+    description: "Open our partner shop and browse for at least one minute.",
+    proofInstructions:
+      "Describe the promo banner text you saw on the landing page.",
+    rewardAmount: 0.8,
+    totalSlots: 300,
+    remainingSlots: 97,
+    status: "active",
+    createdAt: "9 days ago",
+  },
+  {
+    id: "t3",
+    title: "Quick Product Survey",
+    type: "Survey",
+    description: "Answer 12 short questions about how you use TaskEther.",
+    proofInstructions: "Paste the confirmation code shown at the end of the survey.",
+    rewardAmount: 2.25,
+    totalSlots: 200,
+    remainingSlots: 41,
+    status: "active",
+    createdAt: "6 days ago",
+  },
+  {
+    id: "t4",
+    title: "Follow on X",
+    type: "Custom",
+    description: "Follow the TaskEther account on X and repost the pinned post.",
+    proofInstructions: "Send the link to your repost.",
+    rewardAmount: 1.0,
+    totalSlots: 250,
+    remainingSlots: 250,
+    status: "draft",
+    createdAt: "3 days ago",
+  },
+  {
+    id: "t5",
+    title: "Refer a Friend Challenge",
+    type: "Referral Bonus",
+    description: "Invite one friend who completes their first task this week.",
+    proofInstructions: "Send your referral link and your friend's username.",
+    rewardAmount: 3.0,
+    totalSlots: 100,
+    remainingSlots: 64,
+    status: "paused",
+    createdAt: "1 month ago",
+  },
+  {
+    id: "t6",
+    title: "Beta Feedback Form",
+    type: "Survey",
+    description: "Share your feedback on the new wallet screen.",
+    proofInstructions: "Paste the submission ID from the feedback form.",
+    rewardAmount: 1.75,
+    totalSlots: 150,
+    remainingSlots: 0,
+    status: "completed",
+    createdAt: "2 months ago",
+  },
+  {
+    id: "t7",
+    title: "Old Launch Giveaway",
+    type: "Custom",
+    description: "Legacy launch campaign, no longer available.",
+    proofInstructions: "Send a screenshot of your giveaway entry.",
+    rewardAmount: 0.5,
+    totalSlots: 400,
+    remainingSlots: 12,
+    status: "archived",
+    createdAt: "4 months ago",
+  },
+];
+
 
 export type SubmissionStatus = "pending" | "approved" | "rejected";
 

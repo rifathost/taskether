@@ -27,6 +27,9 @@ import { Route as TasksIndexRouteImport } from './routes/tasks.index'
 import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 import { Route as AdminSubmissionsIndexRouteImport } from './routes/admin.submissions.index'
 import { Route as AdminSubmissionsSubmissionIdRouteImport } from './routes/admin.submissions.$submissionId'
+import { Route as AdminTasksIndexRouteImport } from './routes/admin.tasks.index'
+import { Route as AdminTasksTaskIdRouteImport } from './routes/admin.tasks.$taskId'
+import { Route as AdminTasksNewRouteImport } from './routes/admin.tasks.new'
 import { Route as AdminWithdrawalsIndexRouteImport } from './routes/admin.withdrawals.index'
 import { Route as AdminWithdrawalsWithdrawalIdRouteImport } from './routes/admin.withdrawals.$withdrawalId'
 
@@ -121,6 +124,21 @@ const AdminSubmissionsSubmissionIdRoute =
     path: '/$submissionId',
     getParentRoute: () => AdminSubmissionsRoute,
   } as any)
+const AdminTasksIndexRoute = AdminTasksIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminTasksRoute,
+} as any)
+const AdminTasksTaskIdRoute = AdminTasksTaskIdRouteImport.update({
+  id: '/$taskId',
+  path: '/$taskId',
+  getParentRoute: () => AdminTasksRoute,
+} as any)
+const AdminTasksNewRoute = AdminTasksNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => AdminTasksRoute,
+} as any)
 const AdminWithdrawalsIndexRoute = AdminWithdrawalsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -145,14 +163,17 @@ export interface FileRoutesByFullPath {
   '/withdraw': typeof WithdrawRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/submissions': typeof AdminSubmissionsRouteWithChildren
-  '/admin/tasks': typeof AdminTasksRoute
+  '/admin/tasks': typeof AdminTasksRouteWithChildren
   '/admin/withdrawals': typeof AdminWithdrawalsRouteWithChildren
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/admin/': typeof AdminIndexRoute
   '/tasks/': typeof TasksIndexRoute
   '/admin/submissions/$submissionId': typeof AdminSubmissionsSubmissionIdRoute
+  '/admin/tasks/$taskId': typeof AdminTasksTaskIdRoute
+  '/admin/tasks/new': typeof AdminTasksNewRoute
   '/admin/withdrawals/$withdrawalId': typeof AdminWithdrawalsWithdrawalIdRoute
   '/admin/submissions/': typeof AdminSubmissionsIndexRoute
+  '/admin/tasks/': typeof AdminTasksIndexRoute
   '/admin/withdrawals/': typeof AdminWithdrawalsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -164,13 +185,15 @@ export interface FileRoutesByTo {
   '/send': typeof SendRoute
   '/withdraw': typeof WithdrawRoute
   '/admin/login': typeof AdminLoginRoute
-  '/admin/tasks': typeof AdminTasksRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/admin': typeof AdminIndexRoute
   '/tasks': typeof TasksIndexRoute
   '/admin/submissions/$submissionId': typeof AdminSubmissionsSubmissionIdRoute
+  '/admin/tasks/$taskId': typeof AdminTasksTaskIdRoute
+  '/admin/tasks/new': typeof AdminTasksNewRoute
   '/admin/withdrawals/$withdrawalId': typeof AdminWithdrawalsWithdrawalIdRoute
   '/admin/submissions': typeof AdminSubmissionsIndexRoute
+  '/admin/tasks': typeof AdminTasksIndexRoute
   '/admin/withdrawals': typeof AdminWithdrawalsIndexRoute
 }
 export interface FileRoutesById {
@@ -186,14 +209,17 @@ export interface FileRoutesById {
   '/withdraw': typeof WithdrawRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/submissions': typeof AdminSubmissionsRouteWithChildren
-  '/admin/tasks': typeof AdminTasksRoute
+  '/admin/tasks': typeof AdminTasksRouteWithChildren
   '/admin/withdrawals': typeof AdminWithdrawalsRouteWithChildren
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/admin/': typeof AdminIndexRoute
   '/tasks/': typeof TasksIndexRoute
   '/admin/submissions/$submissionId': typeof AdminSubmissionsSubmissionIdRoute
+  '/admin/tasks/$taskId': typeof AdminTasksTaskIdRoute
+  '/admin/tasks/new': typeof AdminTasksNewRoute
   '/admin/withdrawals/$withdrawalId': typeof AdminWithdrawalsWithdrawalIdRoute
   '/admin/submissions/': typeof AdminSubmissionsIndexRoute
+  '/admin/tasks/': typeof AdminTasksIndexRoute
   '/admin/withdrawals/': typeof AdminWithdrawalsIndexRoute
 }
 export interface FileRouteTypes {
@@ -216,8 +242,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/tasks/'
     | '/admin/submissions/$submissionId'
+    | '/admin/tasks/$taskId'
+    | '/admin/tasks/new'
     | '/admin/withdrawals/$withdrawalId'
     | '/admin/submissions/'
+    | '/admin/tasks/'
     | '/admin/withdrawals/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -229,13 +258,15 @@ export interface FileRouteTypes {
     | '/send'
     | '/withdraw'
     | '/admin/login'
-    | '/admin/tasks'
     | '/tasks/$taskId'
     | '/admin'
     | '/tasks'
     | '/admin/submissions/$submissionId'
+    | '/admin/tasks/$taskId'
+    | '/admin/tasks/new'
     | '/admin/withdrawals/$withdrawalId'
     | '/admin/submissions'
+    | '/admin/tasks'
     | '/admin/withdrawals'
   id:
     | '__root__'
@@ -256,8 +287,11 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/tasks/'
     | '/admin/submissions/$submissionId'
+    | '/admin/tasks/$taskId'
+    | '/admin/tasks/new'
     | '/admin/withdrawals/$withdrawalId'
     | '/admin/submissions/'
+    | '/admin/tasks/'
     | '/admin/withdrawals/'
   fileRoutesById: FileRoutesById
 }
@@ -401,6 +435,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSubmissionsSubmissionIdRouteImport
       parentRoute: typeof AdminSubmissionsRoute
     }
+    '/admin/tasks/': {
+      id: '/admin/tasks/'
+      path: '/'
+      fullPath: '/admin/tasks/'
+      preLoaderRoute: typeof AdminTasksIndexRouteImport
+      parentRoute: typeof AdminTasksRoute
+    }
+    '/admin/tasks/$taskId': {
+      id: '/admin/tasks/$taskId'
+      path: '/$taskId'
+      fullPath: '/admin/tasks/$taskId'
+      preLoaderRoute: typeof AdminTasksTaskIdRouteImport
+      parentRoute: typeof AdminTasksRoute
+    }
+    '/admin/tasks/new': {
+      id: '/admin/tasks/new'
+      path: '/new'
+      fullPath: '/admin/tasks/new'
+      preLoaderRoute: typeof AdminTasksNewRouteImport
+      parentRoute: typeof AdminTasksRoute
+    }
     '/admin/withdrawals/': {
       id: '/admin/withdrawals/'
       path: '/'
@@ -431,6 +486,22 @@ const AdminSubmissionsRouteChildren: AdminSubmissionsRouteChildren = {
 const AdminSubmissionsRouteWithChildren =
   AdminSubmissionsRoute._addFileChildren(AdminSubmissionsRouteChildren)
 
+interface AdminTasksRouteChildren {
+  AdminTasksTaskIdRoute: typeof AdminTasksTaskIdRoute
+  AdminTasksNewRoute: typeof AdminTasksNewRoute
+  AdminTasksIndexRoute: typeof AdminTasksIndexRoute
+}
+
+const AdminTasksRouteChildren: AdminTasksRouteChildren = {
+  AdminTasksTaskIdRoute: AdminTasksTaskIdRoute,
+  AdminTasksNewRoute: AdminTasksNewRoute,
+  AdminTasksIndexRoute: AdminTasksIndexRoute,
+}
+
+const AdminTasksRouteWithChildren = AdminTasksRoute._addFileChildren(
+  AdminTasksRouteChildren,
+)
+
 interface AdminWithdrawalsRouteChildren {
   AdminWithdrawalsWithdrawalIdRoute: typeof AdminWithdrawalsWithdrawalIdRoute
   AdminWithdrawalsIndexRoute: typeof AdminWithdrawalsIndexRoute
@@ -447,7 +518,7 @@ const AdminWithdrawalsRouteWithChildren =
 interface AdminRouteChildren {
   AdminLoginRoute: typeof AdminLoginRoute
   AdminSubmissionsRoute: typeof AdminSubmissionsRouteWithChildren
-  AdminTasksRoute: typeof AdminTasksRoute
+  AdminTasksRoute: typeof AdminTasksRouteWithChildren
   AdminWithdrawalsRoute: typeof AdminWithdrawalsRouteWithChildren
   AdminIndexRoute: typeof AdminIndexRoute
 }
@@ -455,7 +526,7 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminLoginRoute: AdminLoginRoute,
   AdminSubmissionsRoute: AdminSubmissionsRouteWithChildren,
-  AdminTasksRoute: AdminTasksRoute,
+  AdminTasksRoute: AdminTasksRouteWithChildren,
   AdminWithdrawalsRoute: AdminWithdrawalsRouteWithChildren,
   AdminIndexRoute: AdminIndexRoute,
 }
